@@ -1,0 +1,8 @@
+{
+  "name": "react-native-redux-persistent-template",
+  "version": "0.0.5",
+  "description": "React Native Template",
+  "repository": "https://github.com/Taaseen71/rn-redux-persist-template.git",
+  "author": "Saadat Taaseen",
+  "license": "MIT"
+}
