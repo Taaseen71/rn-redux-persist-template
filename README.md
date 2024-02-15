@@ -1,0 +1,1 @@
+# rn-redux-persist-template
