@@ -8,10 +8,15 @@ export const userSlice = createSlice({
     },
     reducers: {
         logInUser: (state, action) => {
-            state.userName = action.payload
+            state.userName = action.payload.userName
+            state.data = action.payload.data
         },
         resetUser: (state) => {
             state.userName = ''
+        },
+        signUpUser: (state, action ) => {
+            state.userName = action.payload
+            state.data = action.payload.data
         }
     }
 })
