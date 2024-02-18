@@ -46,8 +46,8 @@ const Navigation = (props) => {
 
     const UnAuthorized = () => (
         <Stack.Navigator>
-            <Stack.Screen  name="ReactSagaScreen"  options = {naviButton("headerRight", "Log In")}>
-                {() => {<ReactSagaScreen/>}}
+            <Stack.Screen  name="React Saga Screen"  options = {naviButton("headerRight", "Log In")}>
+                {() => <ReactSagaScreen/>}
             </Stack.Screen>
 
             <Stack.Screen  name="Log In"  options={naviButton("headerRight", "Sign Up")}>
