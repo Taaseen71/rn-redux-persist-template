@@ -7,16 +7,22 @@ function callGetRequest(url, data, headers) {
     return ApiHelper.get(url, data, headers);
 }
 
-function* watchRequest () {  //* is a generator function
-    while (true) {
-        const {payload} = yield take(request);
 
-        try {
-            let response;
-            resposne = yield call(callGetRequest, payload.url, {});
-            yield put (success(response));
-        } catch (er) {
-            yield put (failure(er))
-        }
+function* watchRequest() {
+    while (true) {
+      const {payload} = yield take(request);
+  
+      try {
+        let response;
+  
+        response = yield call(callGetRequest, payload.url, {});
+        yield put(success(response));
+      } catch (ex) {
+        yield put(failure(ex));
+      }
     }
+  }
+  
+export default function* root() {
+yield fork(watchRequest);
 }
