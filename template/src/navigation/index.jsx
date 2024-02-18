@@ -1,10 +1,9 @@
 import { View, Text, Button } from 'react-native'
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { HomeScreen, LogIn, SignUp, Fetch, ReactContext } from '@screens';
+import { HomeScreen, LogIn, SignUp, Fetch, ReactContext, ReactSagaScreen } from '@screens';
 import React, {useState, useEffect} from 'react'
 import {useNavigation} from '@react-navigation/native';
-import ReactSagaScreen from 'src/screens/ReactSagaScreen';
 import { useSelector } from 'react-redux';
         
 
@@ -16,16 +15,22 @@ const Navigation = (props) => {
     const user = useSelector(state => state.user)
     const [isLoggedIn, setIsLoggedIn] = useState(user.userName ? true : false)
 
+
+
+    const naviButton = (optionName, pageName, pageTitle) => {
+        return { [optionName]: () => (<Button  title={pageName}  onPress={() => {navigation.navigate(pageTitle ? pageTitle : pageName)}} />)}
+    }
+    // const navigateButton = (arg1, arg2) => (
+    //     <Button  title={arg1}  onPress={() => {navigation.navigate(arg2 ? arg2 : arg1)}} />
+    // )
+    
+    
+    
+    
     useEffect(() => {
     //   setIsLoggedIn(user.userName?.data ? true : false)
       setIsLoggedIn(user.userName ? true : false)
     }, [user])
-    
-
-    
-    
-    
-    
     
     
     const Authorized = () => (
@@ -41,29 +46,11 @@ const Navigation = (props) => {
 
     const UnAuthorized = () => (
         <Stack.Navigator>
-            <Stack.Screen 
-                name="ReactSagaScreen" 
-                options={{headerRight: () => (
-                                    <Button
-                                        title={"Log In"} 
-                                        onPress={() => {navigation.navigate('Log In')}}
-                                    />)
-                        }}
-            >
+            <Stack.Screen  name="ReactSagaScreen"  options = {naviButton("headerRight", "Log In")}>
                 {() => {<ReactSagaScreen/>}}
             </Stack.Screen>
 
-            <Stack.Screen 
-                name="Log In" 
-                options={{
-                            headerRight: () => (
-                                <Button 
-                                    title={"Sign Up"} 
-                                    onPress={() => {navigation.navigate('Sign Up')}}
-                                />
-                            )
-                        }}
-            >
+            <Stack.Screen  name="Log In"  options={naviButton("headerRight", "Sign Up")}>
                 {() => <LogIn isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/> }
             </Stack.Screen>
 
@@ -73,7 +60,15 @@ const Navigation = (props) => {
         </Stack.Navigator>
     )
     
-  return (isLoggedIn ? <Authorized/> : <UnAuthorized/>)
+  return (isLoggedIn ? <Authorized />  : <UnAuthorized/>)
 }
+
+
+
+
+
+
+
+
 
 export default Navigation
