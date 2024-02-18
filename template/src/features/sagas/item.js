@@ -1,5 +1,5 @@
 import {take, put, call, fork} from 'redux-saga/effects';
-import {request, success, failure} from '../features/item/itemSlice';
+import {request, success, failure} from 'src/features/item/itemSlice';
 
 import {ApiHelper} from 'src/helpers/ApiHelper';
 
