@@ -1,6 +1,9 @@
 import {create} from 'apisauce';
-import { kApiUrl, ERROR_NETWORK_NOT_AVAILABLE, ERROR_WRONG_CREDENTIALS } from '../config/WebService';
-
+import {
+  kApiUrl,
+  ERROR_NETWORK_NOT_AVAILABLE,
+  ERROR_WRONG_CREDENTIALS,
+} from 'src/config/WebService';
 const api = create({
   baseURL: kApiUrl,
   headers: {'Content-Type': 'application/json', Accept: 'application/json'},
@@ -11,7 +14,7 @@ class ApiHelper {
 
   get = async (url, data, headers) => {
     try {
-      const response = await api.get(url, data, {headers});
+      const response = await api.get(url, data, {});
 
       return new Promise((resolve, reject) => {
         this.handlePromise(resolve, reject, response);
@@ -20,6 +23,7 @@ class ApiHelper {
       console.log(ex);
     }
   };
+
 
   handlePromise = (resolve, reject, response) => {
     if (response.error) {
@@ -35,5 +39,6 @@ class ApiHelper {
     }
   };
 }
+
 
 export default new ApiHelper();
