@@ -13,7 +13,8 @@ const Navigation = (props) => {
     const navigation = useNavigation()
     
     const user = useSelector(state => state.user)
-    const [isLoggedIn, setIsLoggedIn] = useState(user.userName ? true : false)
+    
+    const [isLoggedIn, setIsLoggedIn] = useState(user.data?.id ? true : false)
 
 
 
@@ -28,8 +29,7 @@ const Navigation = (props) => {
     
     
     useEffect(() => {
-    //   setIsLoggedIn(user.userName?.data ? true : false)
-      setIsLoggedIn(user.userName ? true : false)
+      setIsLoggedIn(user.data?.id ? true : false)
     }, [user])
     
     

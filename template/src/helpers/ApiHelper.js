@@ -25,6 +25,20 @@ class ApiHelper {
   };
 
 
+  post = async (url, data, headers) => {
+    try {
+      const response = await api.post(url, data);
+
+      return new Promise((resolve, reject) => {
+        this.handlePromise(resolve, reject, response);
+      });
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
+  
+
+
   handlePromise = (resolve, reject, response) => {
     if (response.error) {
       if (response.error.code === 'LOGIN_FAILED') {
