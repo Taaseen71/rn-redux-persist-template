@@ -6,7 +6,7 @@ import persistReducer from 'redux-persist/es/persistReducer';
 
 import persistStore from 'redux-persist/lib/persistStore';
 import reducers from 'src/features/reducers';
-import sagas from "src/sagas"
+import sagas from "src/features/sagas"
 import createSagaMiddleware from 'redux-saga'
 
 const isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;
