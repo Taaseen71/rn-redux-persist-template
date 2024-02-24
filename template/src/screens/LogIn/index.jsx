@@ -40,7 +40,7 @@ const LogIn = () => {
             style={globalStyle().button} 
             onPress={() => {
               if(!!email & !!pwd) {
-                dispatch(request({url: kApiLogin, data: {name: name, email: email, password:pwd}}))
+                dispatch(request({url: kApiLogin, data: { email: email, password:pwd}}))
               }
               else {
                 return Alert.alert('Missing Information', 'Fill up email and password')
