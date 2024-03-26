@@ -6,6 +6,7 @@ import {Provider} from 'react-redux';
 // import store from 'src/store';
 import {store} from 'src/store';
 import NavigationDrawer from 'src/navigation/NavigationDrawer';
+import BottomTabNavigator from 'src/navigation/BottomTabNavigator';
 // import 'react-native-gesture-handler';
 
 function App(): JSX.Element {
@@ -14,6 +15,7 @@ function App(): JSX.Element {
       <ErrorBoundary fallback={'There was an error'}>
         <NavigationContainer>
           {/* <Navigation /> */}
+          {/* <BottomTabNavigator /> */}
           <NavigationDrawer />
         </NavigationContainer>
       </ErrorBoundary>
