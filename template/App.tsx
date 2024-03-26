@@ -13,8 +13,8 @@ function App(): JSX.Element {
     <Provider store={store}>
       <ErrorBoundary fallback={'There was an error'}>
         <NavigationContainer>
-          <Navigation />
-          {/* <NavigationDrawer /> */}
+          {/* <Navigation /> */}
+          <NavigationDrawer />
         </NavigationContainer>
       </ErrorBoundary>
     </Provider>

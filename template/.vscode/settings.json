@@ -30,7 +30,7 @@
           "android/",
           ".bundle/"
         ],
-        "peek": ["babel.config.js"]
+        "peek": ["babel.config.js", "index.js"]
       },
       {
         "name": "Strict",
@@ -53,7 +53,6 @@
     "app.json": true,
     "Gemfile": true,
     "Gemfile.lock": true,
-    "index.js": true,
     "jest.config.js": true,
     "metro.config.js": true,
     "package.json": true,
