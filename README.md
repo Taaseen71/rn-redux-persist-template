@@ -6,6 +6,17 @@ Install application using the command:
 npx react-native init testApp --template https://github.com/Taaseen71/rn-redux-persist-template.git
 ```
 
+## Step IMPORTANT: IMPORT FUNCTIONAL IN FLIPPER
+
+open xcode > Pods (Application. not folder) > Flipper > FlipperTransportTypes.jh
+
+```
+#include <functional>
+```
+clean build folder by typing shift+command+K, 
+
+run again
+
 ## Step 2: Change the name of the React Native File using the command:
 
 (cd into folder first)
