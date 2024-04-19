@@ -59,5 +59,28 @@ target 'template' do
       :mac_catalyst_enabled => false
     )
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
+  
+    # Add code to modify FlipperTransportTypes.h
+    installer.aggregate_targets.each do |target|
+      target.pod_targets.each do |pod|
+        if pod.name == 'Flipper'
+          flipper_transport_types_header = File.join(pod.sandbox.root, 'Flipper', 'xplat', 'Flipper', 'FlipperTransportTypes.h')
+          puts "Checking for #{flipper_transport_types_header}"
+          if File.file?(flipper_transport_types_header)
+            puts "Found #{flipper_transport_types_header}"
+            content = File.read(flipper_transport_types_header)
+            unless content.include?("#include <functional>")
+              updated_content = content.gsub(/#pragma once\n/, "#pragma once\n#include <functional>\n")
+              File.write(flipper_transport_types_header, updated_content)
+              puts "File updated successfully"
+            else
+              puts "File already contains #include <functional>"
+            end
+          else
+            puts "#{flipper_transport_types_header} not found"
+          end
+        end
+      end
+    end
   end
 end
